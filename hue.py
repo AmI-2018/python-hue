@@ -1,11 +1,11 @@
 """
 Created on Apr 4, 2014
-Updated on April 24, 2017
+Updated on May 16, 2018
 
 @author: Dario Bonino
 @author: Luigi De Russis
 
-Copyright (c) 2014-2017 Dario Bonino and Luigi De Russis
+Copyright (c) 2014-2018 Dario Bonino and Luigi De Russis
  
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # username = 'newdeveloper'
 
     # lights URL
-    lights_url = base_url+'/api/'+username+'/lights/'
+    lights_url = base_url + '/api/' + username + '/lights/'
     
     # get the Hue lights
     all_the_lights = rest.send(url=lights_url)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     if type(all_the_lights) is dict:
         # iterate over the Hue lights, turn them on with the color loop effect
         for light in all_the_lights:
-            url_to_call = lights_url+light+"/state"
+            url_to_call = lights_url + light + '/state'
             body = '{ "on" : true, "effect" : "colorloop" }'
             # to set the red color
             # body = '{ "hue" : 0 }'
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
         # iterate over the Hue lights and turn them off
         for light in all_the_lights:
-            url_to_call = lights_url+light+"/state"
+            url_to_call = lights_url + light + '/state'
             body = '{ "on" : false }'
             rest.send('PUT', url_to_call, body, {'Content-Type': 'application/json'})
     else:
